@@ -1,0 +1,78 @@
+{% macro render_field(field) %}
+
+	<div {% if field.errors %}class="has-error"{% endif %}>
+		{{ field(placeholder=field.label.text) }}
+		{% if field.errors %}
+		    {% for error in field.errors %}
+		        <span class="help-block">{{error}}</span>
+		    {% endfor %}
+		{% endif %}
+    </div>
+
+{% endmacro %}
+
+
+{% macro render_edit_field(field, memo, memo_items) %}
+	<div {% if field.errors %}class="has-error"{% endif %}>
+		{% for memo_field in memo._meta.fields %}
+			{% if field.name == memo_field %}
+				{{ field(placeholder=field.label.text, value=memo[memo_field]) }}
+			{% endif %}
+        {% endfor %}
+        {% if field.name in memo_items %}
+			{{ field(placeholder=field.label.text, value=", ".join(memo_items[field.name])) }}
+		{% endif %}
+		{% if field.errors %}
+		    {% for error in field.errors %}
+		        <span class="help-block">{{error}}</span>
+		    {% endfor %}
+		{% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_settings_field(field, current_user) %}
+	<div {% if field.errors %}class="has-error"{% endif %}>
+		{% if field.name in current_user._meta.fields %}
+			{{ field(placeholder=field.label.text, value=current_user[field.name]) }}
+		{% else %}
+			{{ field(placeholder=field.label.text) }}
+        {% endif %}
+
+		{% if field.errors %}
+		    {% for error in field.errors %}
+		        <span class="help-block">{{error}}</span>
+		    {% endfor %}
+		{% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_header(user) %}
+	{% with headers_dict = {'index':user.username, 'record':'Create Memo', 'settings':'{}\'s Settings'.format(user.username)} %}
+		{% if request.endpoint in headers_dict %}
+		<h1 class="col-xs-12">{{ headers_dict[request.endpoint] }}</h1>
+		{% else %}
+		<h1 class="col-xs-12">{{ user.username }}</h1>
+		{% endif %}
+	{% endwith %}
+{% endmacro %}
+
+
+{% macro render_menu(user, memo) %}
+	<ul class="memo-toolbar">
+	{% if request.endpoint == 'index' %}
+		<li><a href="{{ url_for('record') }}" class="to-view glyphicon glyphicon-plus" data-placement="top" data-toggle="tooltip" title="Add Memo"></a></li>
+		<li><a href="{{ url_for('navigate') }}" class="to-view glyphicon glyphicon-calendar" data-placement="top" data-toggle="tooltip" title="Navigate"></a></li>
+		<li><a href="{{ url_for('settings') }}" class="to-view glyphicon glyphicon-cog" data-placement="top" data-toggle="tooltip" title="Settings"></a></li>
+		<li><a href="{{ url_for('logout') }}" class="to-view glyphicon glyphicon-log-out" data-placement="top" data-toggle="tooltip" title="Log&nbsp;Out"></a></li>
+
+	{% else %}
+		<li><a href="{{ url_for('index') }}" class="to-view glyphicon glyphicon-arrow-left" data-placement="top" data-toggle="tooltip" title="Back"></a></li>
+		{% if request.endpoint == 'view_memo' %}
+			<li><a href="{{ url_for('edit', memo_id=memo.id) }}" class="to-view glyphicon glyphicon-pencil" data-placement="top" data-toggle="tooltip" title="Edit"></a></li>
+			<li><a href="{{ url_for('erase', memo_id=memo.id) }}" class="to-view glyphicon glyphicon-erase" data-placement="top" data-toggle="tooltip" title="Delete"></a></li>
+		{% endif %}
+	{% endif %}
+	</ul>
+{% endmacro %}

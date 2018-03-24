@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% from 'macros.html' import render_menu, render_header %}
+
+{% block title %}{{ super() }}{% endblock %}
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<!-- START: Memoir Listing -->
+<section class="container dialogue transit" id="memo-listing">
+    <header class="row dialogue-header menu">
+        {{ render_header(current_user) }}
+        {{ render_menu(current_user) }}
+	</header>
+    <div class="row dialogue-body">
+    	<div class="col-xs-12">
+            <ul class="memoir-list">
+                {% if memoirs %}
+                    {% for memo in memoirs %}
+                        {% if display_years %}
+                        <li><a href="{{ url_for('navigate', year=memo.timestamp.year) }}">{{memo.timestamp.year}}</a></li>
+                        {% elif display_months %}
+                        <li><a href="{{ url_for('navigate', year=memo.timestamp.year, month=memo.timestamp.month) }}">{{memo.timestamp.strftime("%b")}}</a></li>
+                        {% elif display_days %}
+                        <li><a href="{{ url_for('view_memo', year=memo.timestamp.year, month=memo.timestamp.month, day=memo.timestamp.day, memo_id=memo.id) }}" class="text-left"><strong>{{memo.timestamp.strftime("%a %d")}}</strong> | {{memo.title}}</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('view_memo', year=memo.timestamp.year, month=memo.timestamp.month, day=memo.timestamp.day, memo_id=memo.id) }}"> {{memo.title}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+{% endblock %}

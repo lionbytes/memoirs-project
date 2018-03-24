@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% from "macros.html" import render_menu, render_header %}
+
+{% block title %}Memo Details | {{ super() }}{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<section class="container dialogue transit" id="view-memo">
+	<header class="row dialogue-header menu">
+        {{ render_header(current_user) }}
+        {{ render_menu(current_user, memo) }}
+    </header>
+
+    <div class="row dialogue-body">
+    	<div class="col-xs-12">
+            <time data-time="{{ memo.timestamp }}" class="distime" datetime="{{ memo.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}">
+                <a href="#" data-placement="right" data-toggle="tooltip" title="{{ memo.timestamp.strftime('%H:%M:%S') }}">{{ memo.timestamp.strftime('%Y-%b-%d') }}</a></time>
+                
+            <h2 class="memo-title">{{memo.title}}</h2>
+            <p class="memo-content">{{memo.content}}</p>
+            
+            <p><strong>Foods: </strong></p>
+            <ul class="memo-item-list list-unstyled foods-list">
+                {% for item in food_list %}
+                    <li>{{item}}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Activities: </strong></p>
+            <ul class="memo-item-list list-unstyled activs-list">
+                {% for item in activ_list %}
+                    <li>{{item}}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Income: </strong>{{memo.money_made}}</p>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+{% endblock %}

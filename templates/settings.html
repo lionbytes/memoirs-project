@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% from "macros.html" import render_settings_field, render_menu, render_header %}
+
+{% block title %}User Settings | {{ super() }}{% endblock %}
+{% block content %}
+<section class="container dialogue transit" id="settings">
+    <header class="row dialogue-header menu">
+        {{ render_header(current_user) }}
+        {{ render_menu(current_user) }}
+    </header>
+
+    <div class="row dialogue-body">
+        <form class="col-xs-10 col-xs-offset-1" method="POST" action="">
+            {{ form.hidden_tag() }}
+            {% for field in form %}
+                {{ render_settings_field(field, current_user) }}
+            {% endfor %}
+            <button type="submit" class="btn btn-danger transit">
+                <strong>Submit Changes</strong> <span class="glyphicon glyphicon-send"></span>
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}
