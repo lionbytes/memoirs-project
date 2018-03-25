@@ -16,7 +16,7 @@
   </p>
 </p>
 
-A simple web app with a simple interface meant to serve as a micro personal journal to help individuals - especially freelancers - monitor their daily activities. Memoirs was built with the Flask microframework using Python3. The user interface was built using Bootstrap 3.
+A simple web app with a simple interface meant to serve as a micro personal journal to help individuals - especially freelancers - monitor their daily activities. Memoirs was built with the Flask microframework using Python3. 
 
 ## Project Stages
 
@@ -25,7 +25,7 @@ A polished 8-bit video game-like feel to the interface and brand components.
 Designed mainly using Photoshop CS3 and Illustrator CS5.
 
 ### 2. UI Design
-Designed and built with a minimalistic approach.
+Designed with a minimalistic approach, the interface was built with HTML5, CSS3, and jQuery using Bootstrap 3.
 
 ![Login Screen](https://github.com/lionbytes/Memoirs-Project/blob/master/demo-images/03.jpg "Login Screen")
 ![Home Screen](https://github.com/lionbytes/Memoirs-Project/blob/master/demo-images/04.jpg "Home Screen")
@@ -34,7 +34,8 @@ Designed and built with a minimalistic approach.
 
 
 ### 3. Development
-The following technologies and packages have been used to develop this pet project:
+The backend was mainly developed with Python 3 using the Flask micro-framework.
+More comprehensively, the following technologies and packages have been used to develop this pet project:
 - Python 3.6
 - Flask 0.12
 - Flask-Bcrypt 0.7.1
