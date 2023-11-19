@@ -7,7 +7,7 @@
   <p align="center">
     A minimalistic personal micro-journal for self-employed individuals.
     <br>
-    <a href="http://memo.lionbytes.net/"><strong>Live Demo »</strong></a>
+    <a href="http://memoirs.lionbytes.net/"><strong>Live Demo »</strong></a>
     <br>
     <br>
   </p>
@@ -53,7 +53,7 @@ More comprehensively, the following technologies and packages have been used to 
 Project needs more work. Currently on hold..
 
 ## Live Demo
-http://memo.lionbytes.net
+http://memoirs.lionbytes.net
 
 ## Copyright and license
 Code and design copyright 2016-2018 Lionbytes. **Memoirs Project** is released under the MIT License.
