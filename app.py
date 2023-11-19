@@ -149,8 +149,8 @@ def filter_items(items_string, passed_model, memo):
 
 def record_items(item_list, modelitems, passed_model, memo):
 	''' Takes a list of strings, two models, and the many-to-many model that connects them both.
-		Cleans list of strings from.. '''
-	food_list, models.MemoFoods, models.Food, memo
+		Cleans list of strings. Records in database.'''
+	
 	# Clean list from removed old items
 	deleted_records = 0
 	for item in [item.item_name for item in modelitems.select().where(modelitems.memo==memo)]:
@@ -440,7 +440,7 @@ if __name__ == '__main__':
 			password="#pa55w0rd", 
 			password_str="#pa55w0rd",
 			admin=True
-			)
+		)
 	except ValueError:
 		pass
 	app.run(debug=DEBUG, port=PORT, host=HOST)
