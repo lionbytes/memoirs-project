@@ -43,7 +43,7 @@ class Memo(Model):
 	content = TextField(default='')	
 	money_made = DecimalField(default=0)
 	timestamp = DateTimeField(default=datetime.datetime.now)
-	user = ForeignKeyField(rel_model=User, related_name='memos')
+	user = ForeignKeyField(model=User, related_name='memos')
 
 	class Meta:
 		database = DATABASE

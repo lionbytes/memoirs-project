@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
     <br>
   <img src="https://github.com/lionbytes/Memoirs-Project/blob/master/demo-images/logo.png" alt="">
 
