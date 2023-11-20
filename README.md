@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
     <br>
   <img src="https://github.com/lionbytes/Memoirs-Project/blob/master/demo-images/logo.png" alt="">
 
@@ -36,18 +36,38 @@ Designed with a minimalistic approach, the interface was built with HTML5, CSS3,
 ### 3. Development
 The backend was mainly developed with Python 3 using the Flask micro-framework.
 More comprehensively, the following technologies and packages have been used to develop this pet project:
-- Python 3.6
-- Flask 0.12
-- Flask-Bcrypt 0.7.1
-- Flask-Login 0.4.0
-- Flask-Mail 0.9.1
-- WTForms 2.1
-- Flask-WTF 0.14.2
-- Peewee ORM 2.8.5
+- Python 3
+- Flask
+- Flask-Bcrypt
+- Flask-Login 
+- Flask-Mail 
+- Flask-WTF
+- Peewee ORM
 - SQLite 3
-- uWSGI over NginX
 - jQuery v1.11.3
 - Bootstrap 3.3.7 (HTML5, CSS3, Javascript)
+
+After the latest update 2023-11-19 and deployment attempt on a DreamHost shared hosting space, the virtual environment looks as follows:
+- python==3.9.6
+- bcrypt==4.0.1
+- blinker==1.7.0
+- click==8.1.7
+- dnspython==2.4.2
+- email-validator==2.1.0.post1
+- Flask==3.0.0
+- Flask-Bcrypt==1.0.1
+- Flask-Login==0.6.3
+- Flask-Mail==0.9.1
+- Flask-WTF==1.2.1
+- idna==3.4
+- importlib-metadata==6.8.0
+- itsdangerous==2.1.2
+- Jinja2==3.1.2
+- MarkupSafe==2.1.3
+- peewee==3.17.0
+- Werkzeug==3.0.1
+- WTForms==3.1.1
+- zipp==3.17.0
 
 ## Latest Update
 Project needs more work. Currently on hold..
